@@ -5,12 +5,12 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Curso extends Model {
     static associate(models) {
-     /* Curso.hasMany(models.Profesor, {
-        as:'profesores',
-        foreignKey:'id_profesor'
+     Curso.hasMany(models.Curso_Profesor, {
+        as:'registros',
+        foreignKey:'id_curso_profesor'
       })
 
-      Curso.belongsTo(models.Materia, {
+     /* Curso.belongsTo(models.Materia, {
         as:'materia',
         foreignKey:'id_materia'
       })*/

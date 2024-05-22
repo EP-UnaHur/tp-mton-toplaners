@@ -1,4 +1,4 @@
-const {Curso} = require('../db/models')
+const {Curso, Curso_Profesor} = require('../db/models')
 const controller = {}
 
 const findAll = async(req, res) => {
@@ -8,7 +8,14 @@ controller.findAll = findAll
 
 const findById = async(req, res) => {
     const id = req.params.id
-    res.status(200).json(await Curso.findByPk(id))
+    res.status(200).json(await Curso.findOne({
+        where:{id},
+        include: [{
+            model: Curso_Profesor,
+            as: 'registros'
+            //Aca falta incluir a los profesores con dichos registros
+        }]
+    }))
 }
 controller.findById = findById
 
