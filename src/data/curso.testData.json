@@ -1,0 +1,20 @@
+[
+    {
+        "comision":"Comision 2",
+        "turno":"Mañana",
+        "fechaInicio":"13/02/2003",
+        "fechaFin":"13/02/2003"
+    },
+    {
+        "comision":"Comision 3",
+        "turno":"Mañana",
+        "fechaInicio":"13/02/2003",
+        "fechaFin":"13/02/2003"
+    },
+    {
+        "comision":"Comision 4",
+        "turno":"Mañana",
+        "fechaInicio":"13/02/2003",
+        "fechaFin":"13/02/2003"
+    }
+]

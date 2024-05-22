@@ -1,7 +1,7 @@
 {
   "name": "tp-ntom",
   "version": "1.0.0",
-  "description": "Trabajo Practico M to N - -Grupo xxxxxxxxx",
+  "description": "Trabajo Practico M to N - -Grupo Toplaners",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,9 +12,15 @@
     "association",
     "MTON"
   ],
-  "author": "Grupo xxxxxxxxx",
+  "author": "Grupo Toplaners",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
   }
 }
