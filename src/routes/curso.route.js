@@ -12,3 +12,12 @@ route.delete('/cursos/:id',cursoMiddleware.existsById(Curso),cursoController.del
 route.put('/cursos/:id',cursoMiddleware.existsById(Curso), cursoController.updateById)
 
 module.exports = route
+
+/*
+    Cosas que faltan en Curso:
+    +Solucionar el put de cursos
+    +Crear un middleware para lanzar el error 500 en el delete de cursos
+    +Relacionar Curso con materia
+    +Relacionar Curso_Profesor con profesor
+    +Incluir registros y profesores en el get de curso/:id
+*/
