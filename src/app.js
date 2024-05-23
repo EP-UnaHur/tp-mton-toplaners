@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
 //Routes
 const cursoRoute = require('./routes/curso.route')
@@ -9,8 +10,15 @@ const db = require('./db/models')
 //Test data => Esto es para importar los datos de prueba
 const cursoTestData = require('./data/curso.testData.json')
 
+//Inicializar app
 const app = express()
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+//Usar rutas
 app.use(cursoRoute)
+
+
 
 app.listen(3000, async(req, res)=>{
     try

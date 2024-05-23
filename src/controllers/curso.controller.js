@@ -28,10 +28,11 @@ controller.deleteById = deleteById
 
 const updateById = async(req, res) => {
     const cursoUpdated = req.body
+    console.log(req)
     const id = req.params.id
     const cursoToUpdate = await Curso.findByPk(id)
-    console.log(cursoToUpdate)
-    console.log(cursoUpdated)
+    await cursoToUpdate.set(cursoUpdated)
+    await cursoToUpdate.save()
     res.status(200).json(cursoUpdated)
 }
 controller.updateById = updateById
