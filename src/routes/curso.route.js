@@ -3,6 +3,8 @@ const {Router} = require('express')
 const cursoController = require('../controllers/curso.controller')
 const cursoMiddleware = require('../middlewares/middleware');
 const cursoSchema = require('../schemas/curso.schema')
+const {Curso} = require('../db/models')
+
 
 const route = Router()
 
@@ -15,7 +17,7 @@ module.exports = route
 
 /*
     Cosas que faltan en Curso:
-    +Solucionar el put de cursos
+    +Solucionar el put de cursos => Verificar que las validaciones de schema funcionen
     +Crear un middleware para lanzar el error 500 en el delete de cursos
     +Relacionar Curso con materia
     +Relacionar Curso_Profesor con profesor
