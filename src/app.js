@@ -3,12 +3,14 @@ const bodyParser = require('body-parser')
 
 //Routes
 const cursoRoute = require('./routes/curso.route')
+const materiaRoute = require('./routes/materia.route') //agregado
 
 //Models
 const db = require('./db/models')
 
 //Test data => Esto es para importar los datos de prueba
 const cursoTestData = require('./data/curso.testData.json')
+const materiasTestData = require('./data/materia.testData.json') //agregado
 
 //Inicializar app
 const app = express()
@@ -17,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //Usar rutas
 app.use(cursoRoute)
-
+app.use(materiaRoute) //agregado
 
 
 app.listen(3000, async(req, res)=>{
@@ -32,6 +34,8 @@ app.listen(3000, async(req, res)=>{
 
     //Esto es para cargar datos de prueba
     cursoTestData.map( curso => db.Curso.create(curso))
+    materiasTestData.map( materia => db.Materia.create(materia)) //agregado
+
 
 
     console.log("Listen on 3000")

@@ -8,14 +8,14 @@ const getAllMaterias = async (req, res) => {
 controller.getAllMaterias = getAllMaterias;
 
 const materiaById = async (req, res) => {
-    const id = req.params.id
-    res.status(200).json(await Materia.findByPk(id))
+    const idMateria = req.params.id
+    res.status(200).json(await Materia.findByPk(idMateria))
 }
 controller.materiaById = materiaById;
 
 const deleteMateriaById = async(req, res) => {
     const id = req.params.id
-    const row = await db.Materia.destroy({where: {id}})
+    const row = await Materia.destroy({where: {id}})
     res.status(200).json(`La materia con id ${id} se borrado con éxito`)
 }
 controller.deleteMateriaById = deleteMateriaById;
@@ -44,3 +44,5 @@ const getCursosDeUnaMateria = async (req, res) => {
     res.status(200).json(cursosDeMateria)
 }
 controller.getCursosDeUnaMateria = getCursosDeUnaMateria;
+
+module.exports = controller

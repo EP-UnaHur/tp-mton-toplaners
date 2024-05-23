@@ -1,6 +1,6 @@
 const Joi = require('joi')
 
-const clienteSchema = Joi.object.keys({
+const materiaSchema = Joi.object().keys({
     nombre: Joi.string().required().min(3).max(15).messages({
         "string.min": `Nombre debe tener al menos {#limit} caracteres`,
         "string.max": `Nombre debe tener como máximo {#limit} caracteres`,
@@ -16,3 +16,5 @@ const clienteSchema = Joi.object.keys({
         "any.required": "El campo anio es obligatorio"
     })
 })
+
+module.exports = materiaSchema

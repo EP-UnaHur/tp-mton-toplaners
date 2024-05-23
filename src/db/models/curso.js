@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey:'id_curso_profesor'
       })
 
-     /* Curso.belongsTo(models.Materia, {
+      Curso.belongsTo(models.Materia, {
         as:'materia',
         foreignKey:'id_materia'
-      })*/
+      })
     }
   }
   Curso.init({

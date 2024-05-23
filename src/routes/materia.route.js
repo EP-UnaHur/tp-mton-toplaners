@@ -7,10 +7,12 @@ const route = Router()
 
 route.get('/materias', userController.getAllMaterias)
 
-route.get('materias/:id', middlewareMateria.existsById ,userController.materiaById)
+route.get('/materias/:id', middlewareMateria.existsById(Materia) ,userController.materiaById)
 
-route.delete('/materia/:id', middlewareMateria.existsById, userController.deleteMateriaById)
+route.delete('/materias/:id', middlewareMateria.existsById(Materia), userController.deleteMateriaById, userController.deleteMateriaById)
 
-route.post('materia/:id/cursos', middlewareMateria.existsById, userController.crearCurso)
+route.post('/materia/:id/cursos', middlewareMateria.validateSchema(materiaSchema), middlewareMateria.existsById(Materia), userController.crearCurso)
 
-route.get('materias/:id/cursos', middlewareMateria.existsById, userController.getCursosDeUnaMateria)
+route.get('/materias/:id/cursos', middlewareMateria.existsById(Materia), userController.getCursosDeUnaMateria)
+
+module.exports = route
