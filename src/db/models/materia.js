@@ -7,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       /*
       Materia.hasMany(models.Curso, {
-        as: 'cursosArray',
-        foreignKey: 'id_curso'
+        as: 'cursos',
+        foreignKey: 'id_materia'
       })
 
       Materia.belongsTo(models.Carrera, {
-        as: 'Carrera',
+        as: 'carrera',
         foreignKey: 'id_carrera'
       })
       */
