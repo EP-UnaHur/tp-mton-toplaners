@@ -1,4 +1,4 @@
-const {Materia} = require('../db/models')
+const {Materia, Curso} = require('../db/models')
 
 const controller = {}
 
@@ -22,21 +22,21 @@ controller.deleteMateriaById = deleteMateriaById;
 
 const crearCurso = async (req, res) => {
     const idMateria = req.params.id
-    const materia = await db.Materia.findByPk(idMateria)
+    const materia = await Materia.findByPk(idMateria)
     const curso = req.body
-    const nuevoRegistro = await db.Curso.create({id_materia: materia.id, ...curso})
+    const nuevoRegistro = await Curso.create({id_materia: materia.id, ...curso})
     res.status(200).json(nuevoRegistro)
 }
 controller.crearCurso = crearCurso;
 
 const getCursosDeUnaMateria = async (req, res) => {
     const idMateria = req.params.id
-    const cursosDeMateria = await db.Materia.findOne(
+    const cursosDeMateria = await Materia.findOne(
     {    
-        where: {idMateria},
+        where: {id: idMateria},
         include: [
             {
-            model: db.Curso,
+            model: Curso,
             as: 'cursos'
             }
         ]
