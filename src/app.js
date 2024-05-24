@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 //Routes
 const cursoRoute = require('./routes/curso.route')
 const materiaRoute = require('./routes/materia.route') //agregado
+const profesorRoute = require('./routes/profesor.route')
+const carrerasRoute = require('./routes/carrera.route')
 
 //Models
 const db = require('./db/models')
@@ -19,7 +21,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 //Usar rutas
 app.use(cursoRoute)
-app.use(materiaRoute) //agregado
+app.use(materiaRoute)
+//app.use(profesorRoute) comentado hasta que agregue bien la funcionalidad xd nacho
+//app.use(carrerasRoute)
+//agregado
 
 
 app.listen(3000, async(req, res)=>{
