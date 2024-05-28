@@ -1,18 +1,18 @@
 const {Router} = require('express')
-const {Carrera} = require('../db/models')
-const userController = require('../controllers/carrera.controller')
+const {carrera} = require('../db/models')
+const carreraController = require('../controllers/carrera.controller')
 const middlewareCarrera = require('../middlewares/middleware')
-const route = Router()
+const routerCarrera = Router()
 
-route.get("/carreras", userController.getAllCarreras)
+routerCarrera.get("/carreras", carreraController.getAllCarreras)
 
-route.get("/carreras/:id", middlewareCarrera.existsById(Carrera), userController.getCarreraId)
+routerCarrera.get("/carreras/:id", middlewareCarrera.existsById(carrera), carreraController.getCarreraById)
 
-route.get("/carreras/:id/materias",middlewareCarrera.existsById(Carrera), userController.getMateriasInCarrera)
+routerCarrera.get("/carreras/:id/materias",middlewareCarrera.existsById(carrera), carreraController.getMateriasInCarrera)
 
-route.post("/carreras", userController.createCarrera)
+routerCarrera.post("/carreras", carreraController.createCarrera)
 
-route.post("/carreras/:id/materia", middlewareCarrera.existsById(Carrera), userController.createMateriaInCarrera)
+routerCarrera.post("/carreras/:id/materia", middlewareCarrera.existsById(carrera), carreraController.createMateriaInCarrera)
 
 
-module.exports = route
+module.exports = routerCarrera

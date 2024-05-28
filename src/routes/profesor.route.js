@@ -1,22 +1,24 @@
+
 const {Router} = require('express')
 const {Profesor} = require('../db/models')
 const {Curso} = require('../db/models')
-const userController = require('../controllers/profesor.controller')
-const middlewareCarrera = require('../middlewares/middleware')
-const route = Router()
+const profesorController = require('../controllers/profesor.controller')
+const middlewareProfesor = require('../middlewares/middleware')
+const routeProfesor = Router()
 
-route.get("/profesores", userController.getAllProfesores)
+routeProfesor.get("/profesores", profesorController.getAllProfesores)
 
-route.get("/profesores/:id", middlewareCarrera.existsById(Profesor), userController.getProfesorId)
+routeProfesor.get("/profesores/:id", middlewareProfesor.existsById(Profesor), profesorController.getProfesorById)
 
-route.get("/cursos/:id/profesores", middlewareCarrera.existsById(Curso) ,userController.getProfesoresCurso)
+routeProfesor.get("/cursos/:id/profesores", middlewareProfesor.existsById(Curso) ,profesorController.getProfesoresCurso)
 
-route.post("/profesores",userController.createProfesor)
+routeProfesor.post("/profesores",profesorController.createProfesor)
 
-route.put("/profesores/:id", userController.modifyProfesor)
+routeProfesor.put("/profesores/:id", profesorController.modifyProfesorById)
 
-route.delete("/profesores/:id",middlewareCarrera.existsById(Profesor) ,userController.deleteProfesorId)
+routeProfesor.delete("/profesores/:id",middlewareProfesor.existsById(Profesor) ,profesorController.deleteProfesorById)
 
-route.post("/cursos/:id/profesores", userController.asociarProfeCurso)
+//route.post("/cursos/:id/profesores", profesorController.asociarProfeCurso) ni idea como se hace este jaja
 
-route.get("/profesores/:id/cursos", middlewareCarrera.existsById(Profesor) ,userController.getCursosProfesor)
+routeProfesor.get("/profesores/:id/cursos", middlewareProfesor.existsById(Profesor) ,profesorController.getCursosProfesor)
+module.exports = routeProfesor
