@@ -10,7 +10,7 @@ controllerCarrera.getAllCarreras = getAllCarreras
 
 const getCarreraById = async (req,res) => {
     const carreraId = req.params.id 
-    res.status(200).json(await carrera.findByPk(carredaId))
+    res.status(200).json(await carrera.findByPk(carreraId))
 }
 controllerCarrera.getCarreraById = getCarreraById
 
@@ -22,7 +22,7 @@ const getMateriasInCarrera = async (req, res) => {
         include :[
             {
                 model: Materia,
-                as:"Materias"
+                as:"materias"
             }
         ]
     }

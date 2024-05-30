@@ -2,19 +2,23 @@
     {
         "comision":"Comision 2",
         "turno":"Mañana",
-        "fechaInicio":"13/02/2003",
-        "fechaFin":"13/02/2003"
+        "fechaInicio":"2012-04-23T18:25:43.511Z",
+        "fechaFin":"2012-04-23T18:25:43.511Z",
+        "id_materia":1
     },
     {
         "comision":"Comision 3",
         "turno":"Mañana",
-        "fechaInicio":"13/02/2003",
-        "fechaFin":"13/02/2003"
+        "fechaInicio":"2012-04-23T18:25:43.511Z",
+        "fechaFin":"2012-04-23T18:25:43.511Z",
+        "id_materia":2
+
     },
     {
         "comision":"Comision 4",
         "turno":"Mañana",
-        "fechaInicio":"13/02/2003",
-        "fechaFin":"13/02/2003"
+        "fechaInicio":"2012-04-23T18:25:43.511Z",
+        "fechaFin":"2012-04-23T18:25:43.511Z",
+        "id_materia":3
     }
 ]

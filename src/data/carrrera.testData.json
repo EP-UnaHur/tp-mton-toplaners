@@ -1,24 +1,17 @@
 [
     {
-    "nombre": "info",
-    "grado": "1",
-    "universidad": "hur",
-    "materias":[
-        {
-            "nombre": "objetos 1",
-            "cuatrimestral": "2",
-            "anio": "2"
-        },
-        {
-            "nombre": "matematica 2",
-            "cuatrimestral": "2",
-            "anio": "1"
-        },
-        {
-            "nombre": "Orga 1",
-            "cuatrimestral": "1",
-            "anio": "1"
-        }
-    ]
+    "nombre": "Licenciatura en informatica",
+    "grado": "5",
+    "universidad": "Unahur"
+    },
+    {
+    "nombre": "Licenciatura en Biotecnlogia",
+    "grado": "5",
+    "universidad": "Unahur"  
+    },
+    {
+    "nombre": "Profesorado de Matematica",
+    "grado": "4",
+    "universidad": "Unahur"  
     }
 ]

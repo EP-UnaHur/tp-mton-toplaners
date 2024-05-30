@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 const existsById = (Model) => {
     return async(req, res, next) =>{
         const id = req.params.id
@@ -26,4 +28,15 @@ const validateSchema = (schema) => {
     }
 }
 
-module.exports = {existsById, validateSchema}
+const existsRowInOtherModel = (RowModel, ModelToCheck) => {
+    return async (req, res, next) => {
+        const id = req.params.id
+        const row = await RowModel.findByPk(id)
+        const rowsToCheck = await ModelToCheck.findAll({})
+        if (rowsToCheck.some(_.isEqual.bind(null, row)))
+           return res.status(500).json(`El ${modelName} con id ${id} tiene relación con otro registro en la base de datos`)
+        next()
+    }
+}
+
+module.exports = {existsById, validateSchema, existsRowInOtherModel}

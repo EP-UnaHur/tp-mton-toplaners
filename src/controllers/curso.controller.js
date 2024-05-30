@@ -1,4 +1,4 @@
-const {Curso, Curso_Profesor} = require('../db/models')
+const {Curso, Curso_Profesor, Profesor, Materia} = require('../db/models')
 const controller = {}
 
 const findAll = async(req, res) => {
@@ -10,11 +10,12 @@ const findById = async(req, res) => {
     const id = req.params.id
     res.status(200).json(await Curso.findOne({
         where:{id},
-        include: [{
-            model: Curso_Profesor,
-            as: 'registros'
-            //Aca falta incluir a los profesores con dichos registros
-        }]
+        include: [
+            {
+                model: Materia,
+                as: 'materia',
+            }
+        ]
     }))
 }
 controller.findById = findById
@@ -33,8 +34,37 @@ const updateById = async(req, res) => {
     const cursoToUpdate = await Curso.findByPk(id)
     await cursoToUpdate.set(cursoUpdated)
     await cursoToUpdate.save()
-    res.status(200).json(cursoUpdated)
+    res.status(200).json(`El curso con id ${id} se ha actualizado correctamente`)
 }
 controller.updateById = updateById
+
+const getProfesoresById = async(req, res) => {
+    const id = req.params.id
+    res.status(200).json(await Curso.findOne({
+        where:{id},
+        include: [
+            {
+                model: Materia,
+                as: 'materia',
+            },
+            {
+                model: Profesor,
+                as: 'profesores'
+            }
+        ]
+    }))
+}
+controller.getProfesoresById = getProfesoresById
+
+
+const associateProfesoresById = async(req, res) => {
+    const listaProfes = req.body
+    const id = req.params.id
+    listaProfes.map(async (profe) => {
+    await Curso_Profesor.create({id_curso: id, id_profesor: profe.id})
+   })
+   res.status(200).json(`El curso con id ${id} se ha asociado con los profes dados`)
+}
+controller.associateProfesoresById = associateProfesoresById
 
 module.exports = controller
