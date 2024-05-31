@@ -18,7 +18,6 @@ const carreraTestData = require("./data/carrrera.testData.json")
 const profesorTestData = require('./data/profesor.testData.json')
 const curso_profesorTestData = require('./data/curso_profesor.testData.json')
 
-
 //Inicializar app
 const app = express()
 app.use(express.json())
@@ -31,29 +30,31 @@ app.use(materiaRoute)
 app.use(profesorRoute)
 app.use(carrerasRoute)
 
-const port = process.env.PORT || 3001
+//PORT
+const port = process.env.PORT || 3000
+
 app.listen(port, async(req, res)=>{
-    try
-    {
-    //Esto verifica si me pude conectar bien a la base de datos
-    await db.sequelize.authenticate()
+  try
+  {
+  //Esto verifica si me pude conectar bien a la base de datos
+  await db.sequelize.authenticate()
 
-    // El método sync solo se usa en ambientes de desarrollo. No utilizar en produccion
-    // porque borra todas las tablas y las vueve a crear
-    await db.sequelize.sync({force:true});
+  // El método sync solo se usa en ambientes de desarrollo. No utilizar en produccion
+  // porque borra todas las tablas y las vueve a crear
+  await db.sequelize.sync({force:true}); //Sacar esto en la version final
 
-    //Esto es para cargar datos de prueba
-    carreraTestData.map(carrera => db.carrera.create(carrera))
-    materiasTestData.map( materia => db.Materia.create(materia))
-    profesorTestData.map( profe => db.Profesor.create(profe))
-    cursoTestData.map( curso => db.Curso.create(curso))
-    curso_profesorTestData.map( cursoProf => db.Curso_Profesor.create(cursoProf))
+  //Esto es para cargar datos de prueba
+  carreraTestData.map(carrera => db.carrera.create(carrera))
+  materiasTestData.map( materia => db.Materia.create(materia))
+  profesorTestData.map( profe => db.Profesor.create(profe))
+  cursoTestData.map( curso => db.Curso.create(curso))
+  curso_profesorTestData.map( cursoProf => db.Curso_Profesor.create(cursoProf))
 
-    console.log(`Servidor en el puerto ${port}`)
-    } 
-    catch(error){
-        console.log("Error: "+error)
-    }
+  console.log("Listen on "+port)
+  } 
+  catch(error){
+      console.log("Error: "+error)
+  }
 
 
 })

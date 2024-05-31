@@ -4,15 +4,11 @@
 +Verificar que funcionen las rutas de profesor
 +Verificar que funcionen las rutas de materia
 +Verificar que funcionen las rutas de carrera
-+Variables de entorno con .env
-+Dockerizar todo el proyecto
 +Hacer la guia para instalacion del proyecto y ejecuccion de la api
-+Hacer la configuracion para probar distintos motores de base de datos
 +Hacer una grafico del modelo entidad-relacion
 
 
 -Cosas importantes:
-+Curso ya está casi listo, funcionan todas las rutas, solo le falta el Middleware para el error 500 y el schema de profesor para validar una ruta
++Curso esta listo
 +Cuando haces una peticion de curso que involucre a profesor o viceverse, salen datos del modelo Curso_Profesor que nose como hacer para que no aparezcan
-+Cambie la relacion many to many de curso y profesor, antes estaba mal
 
