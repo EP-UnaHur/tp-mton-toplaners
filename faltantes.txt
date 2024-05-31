@@ -4,10 +4,7 @@
 +Verificar que funcionen las rutas de profesor
 +Verificar que funcionen las rutas de materia
 +Verificar que funcionen las rutas de carrera
-+Variables de entorno con .env
-+Dockerizar todo el proyecto
 +Hacer la guia para instalacion del proyecto y ejecuccion de la api
-+Hacer la configuracion para probar distintos motores de base de datos
 +Hacer una grafico del modelo entidad-relacion
 
 
