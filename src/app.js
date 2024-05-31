@@ -54,12 +54,6 @@ sequelize.sync().then(() => {
     app.listen(3000, async(req, res)=>{
         try
         {
-        //Esto verifica si me pude conectar bien a la base de datos
-        //await dataBaseURL.sequelize.authenticate()
-    
-        // El método sync solo se usa en ambientes de desarrollo. No utilizar en produccion
-        // porque borra todas las tablas y las vueve a crear
-        //await dataBaseURL.sequelize.sync({force:true});
     
         //Esto es para cargar datos de prueba
         carreraTestData.map(carrera => db.carrera.create(carrera))

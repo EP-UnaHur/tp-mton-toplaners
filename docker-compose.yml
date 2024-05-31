@@ -12,3 +12,14 @@ services:
     restart: always
     ports:
       - "3306:3306"
+
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=database_name
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    restart: always
+    ports:
+      - "3307:3306"
