@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+require('dotenv').config();
 
 //Routes
 const cursoRoute = require('./routes/curso.route')
@@ -30,8 +31,8 @@ app.use(materiaRoute)
 app.use(profesorRoute)
 app.use(carrerasRoute)
 
-
-app.listen(3000, async(req, res)=>{
+const port = process.env.PORT || 3001
+app.listen(port, async(req, res)=>{
     try
     {
     //Esto verifica si me pude conectar bien a la base de datos
@@ -48,7 +49,7 @@ app.listen(3000, async(req, res)=>{
     cursoTestData.map( curso => db.Curso.create(curso))
     curso_profesorTestData.map( cursoProf => db.Curso_Profesor.create(cursoProf))
 
-    console.log("Listen on 3000")
+    console.log(`Servidor en el puerto ${port}`)
     } 
     catch(error){
         console.log("Error: "+error)
