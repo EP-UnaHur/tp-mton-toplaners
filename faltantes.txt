@@ -1,11 +1,9 @@
 -Cosas que faltan:
 
-+Schema del profesor
-+Schema de carrera
+
 +Verificar que funcionen las rutas de profesor
 +Verificar que funcionen las rutas de materia
 +Verificar que funcionen las rutas de carrera
-+Middleware para el error 500
 +Variables de entorno con .env
 +Dockerizar todo el proyecto
 +Hacer la guia para instalacion del proyecto y ejecuccion de la api
