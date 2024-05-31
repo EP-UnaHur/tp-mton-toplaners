@@ -28,15 +28,16 @@ const validateSchema = (schema) => {
     }
 }
 
-const existsRowInOtherModel = (RowModel, ModelToCheck) => {
+const existsIdInOtherModel = (Model, ModelToCheck, fk) => {
     return async (req, res, next) => {
-        const id = req.params.id
-        const row = await RowModel.findByPk(id)
-        const rowsToCheck = await ModelToCheck.findAll({})
-        if (rowsToCheck.some(_.isEqual.bind(null, row)))
-           return res.status(500).json(`El ${modelName} con id ${id} tiene relación con otro registro en la base de datos`)
+        const idToFind = req.params.id
+        const modelName = Model.modelName || (Model.options.name && Model.options.name.singular);
+        const ModelToCheckName = ModelToCheck.modelName || (ModelToCheck.options.name && ModelToCheck.options.name.singular);
+        const rowsToCheck = await ModelToCheck.findAll({where: {[fk]: idToFind}})
+        if (rowsToCheck.length > 0)
+           return res.status(500).json(`El ${modelName} con id ${idToFind} tiene relación con otro registro de ${ModelToCheckName} en la base de datos y no se puede borrar`)
         next()
     }
 }
 
-module.exports = {existsById, validateSchema, existsRowInOtherModel}
+module.exports = {existsById, validateSchema, existsIdInOtherModel}
