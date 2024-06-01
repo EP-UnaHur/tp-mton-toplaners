@@ -1,8 +1,7 @@
 version: '3.5'
 
 services:
-    
-
+ 
   node_db1:
     image: mysql
     environment:

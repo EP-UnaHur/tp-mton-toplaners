@@ -13,8 +13,8 @@ route.get('/cursos', cursoController.findAll)
 route.get('/cursos/:id',cursoMiddleware.existsById(Curso), cursoController.findById)
 route.delete('/cursos/:id',cursoMiddleware.existsById(Curso), cursoMiddleware.existsIdInOtherModel(Curso, Curso_Profesor, 'id_curso'), cursoController.deleteById) //Falta el error 500 => affectsOtherRows?
 route.put('/cursos/:id',cursoMiddleware.existsById(Curso), cursoMiddleware.validateSchema(cursoSchema), cursoController.updateById)
-route.get('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoMiddleware.validateSchema(profesorSchema), cursoController.getProfesoresById) //Falta el schema del profesor
-route.post('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoController.associateProfesoresById)
+route.get('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoController.getProfesoresById) 
+route.post('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoMiddleware.validateSchema(profesorSchema), cursoController.associateProfesoresById)
 
 
 
