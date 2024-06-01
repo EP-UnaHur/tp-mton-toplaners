@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Profesor.init({
     nombre: DataTypes.STRING,
     fechaNacimiento: DataTypes.DATEONLY,
-    legajo: DataTypes.NUMBER,
+    legajo: DataTypes.INTEGER,
     activo: DataTypes.TINYINT
   }, {
     sequelize,

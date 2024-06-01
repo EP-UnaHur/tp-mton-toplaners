@@ -6,7 +6,8 @@ module.exports = {
     "password": process.env.DB_DEV_PASSWORD,
     "database": process.env.DB_DEV_DATABASE,
     "host": process.env.DB_DEV_HOST,
-    "dialect": process.env.DB_DEV_DIALECT
+    "dialect": process.env.DB_DEV_DIALECT,
+    "port": process.env.DB_DEV_PORT
   },
   "test": {
     "username": "root",
