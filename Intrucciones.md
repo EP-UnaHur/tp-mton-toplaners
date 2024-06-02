@@ -29,5 +29,5 @@ Una vez levantados los containers correspondientes debemos abrir otra terminal p
 Para conectar a la base de datos podemos utilizar un cliente como DbEaver donde podremos acceder a la base de datos.
 También podemos utilizar postman para utilizar los endpoints solicitados teniendo en cuenta que se levanta en local utilizaremos la ruta ``localhost:3000/``
 
-##MODELO DER
+## MODELO DER
 ![DER](Modelo_DER.png)
