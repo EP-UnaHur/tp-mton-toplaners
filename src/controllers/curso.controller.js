@@ -49,9 +49,12 @@ const getProfesoresById = async(req, res) => {
             },
             {
                 model: Profesor,
-                as: 'profesores'
+                as: 'profesores',
+                through:{
+                    attributes: []
+                }
             }
-        ]
+        ],
     }))
 }
 controller.getProfesoresById = getProfesoresById

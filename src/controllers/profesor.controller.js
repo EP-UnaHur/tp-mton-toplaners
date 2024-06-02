@@ -32,8 +32,8 @@ const getProfesoresCurso = async (req, res) => {
 controllerProfesor.getProfesoresCurso = getProfesoresCurso
 
 const createProfesor = async (req,res) => {
-    const Profesor = req.body
-    const nuevoProfesor = await Profesor.create(Profesor)
+    const profesor = req.body
+    const nuevoProfesor = await Profesor.create(profesor)
     res.status(201).json(nuevoProfesor)
 }
 controllerProfesor.createProfesor = createProfesor
@@ -45,7 +45,7 @@ const modifyProfesorById = async(req, res) => {
     const ProfesorAModificar = await Profesor.findByPk(id)
     await ProfesorAModificar.set(ProfesorUpdated)
     await ProfesorAModificar.save()
-    res.status(200).json(ProfesorUpdated)
+    res.status(200).json(ProfesorAModificar)
 }
 controllerProfesor.modifyProfesorById = modifyProfesorById
 
@@ -67,7 +67,11 @@ const getCursosProfesor = async (req, res) => {
                 include:[{
                     model:Materia,
                     as:'materia'
-                }]
+                    
+                }],
+                through:{
+                    attributes: []
+                }
             }
         ]
     }

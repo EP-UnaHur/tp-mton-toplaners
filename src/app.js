@@ -44,7 +44,7 @@ app.listen(port, async(req, res)=>{
   await db.sequelize.sync({force:true}); //Sacar esto en la version final
 
   //Esto es para cargar datos de prueba
-  carreraTestData.map(carrera => db.carrera.create(carrera))
+  carreraTestData.map(carrera => db.Carrera.create(carrera))
   materiasTestData.map( materia => db.Materia.create(materia))
   profesorTestData.map( profe => db.Profesor.create(profe))
   cursoTestData.map( curso => db.Curso.create(curso))

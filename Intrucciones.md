@@ -5,7 +5,7 @@ Primero debemos tener el visual studio code abierto en la carpeta de la api.
 
 Una vez hecho el paso anterior debemos correr el comando `npm i` para instalar las dependencias necesarias para el funcionamiento de la api.
 
-La api está configurada para utilizar sqlite por defecto, por lo tanto podemos utilizar el comando `npm run dev` para levantar la api y utilizar; o bien...
+La api está configurada para utilizar Sqlite por defecto, por lo tanto podemos utilizar el comando `npm run dev` para levantar la api y utilizar; o bien...
 
 ### Levantar imágenes en docker
 Por otro lado si queremos utilizar otras bases de datos, dejamos configuradas dos *MySql* y *MariaDB*.
@@ -28,3 +28,6 @@ Una vez levantados los containers correspondientes debemos abrir otra terminal p
 ### COMO UTILIZAR LA API
 Para conectar a la base de datos podemos utilizar un cliente como DbEaver donde podremos acceder a la base de datos.
 También podemos utilizar postman para utilizar los endpoints solicitados teniendo en cuenta que se levanta en local utilizaremos la ruta ``localhost:3000/``
+
+##MODELO DER
+![DER](Modelo_DER.png)

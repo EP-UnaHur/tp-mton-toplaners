@@ -3,6 +3,8 @@ const {Materia, Curso} = require('../db/models')
 const materiaController = require('../controllers/materia.controller')
 const materiaMiddleware = require('../middlewares/middleware')
 const materiaSchema = require('../schemas/materia.schema')
+const cursoSchema = require('../schemas/curso.schema')
+
 const route = Router()
 
 route.get('/materias', materiaController.getAllMaterias)
@@ -11,7 +13,7 @@ route.get('/materias/:id', materiaMiddleware.existsById(Materia) ,materiaControl
 
 route.delete('/materias/:id', materiaMiddleware.existsById(Materia), materiaMiddleware.existsIdInOtherModel(Materia, Curso, 'id_materia'), materiaController.deleteMateriaById)
 
-route.post('/materias/:id/curso', materiaMiddleware.validateSchema(materiaSchema), materiaMiddleware.existsById(Materia), materiaController.crearCurso)
+route.post('/materias/:id/curso', materiaMiddleware.existsById(Materia), materiaMiddleware.validateSchema(cursoSchema), materiaController.crearCurso)
 
 route.get('/materias/:id/cursos', materiaMiddleware.existsById(Materia), materiaController.getCursosDeUnaMateria)
 

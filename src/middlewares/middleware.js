@@ -5,10 +5,10 @@ const existsById = (Model) => {
         const id = req.params.id
         const instancia = await Model.findByPk(id)
         const modelName = Model.modelName || (Model.options.name && Model.options.name.singular);
-        if (!instancia){
-            res.status(404).json(`El ${modelName} con id ${id} no existe`)
-        }
-        next()
+        if (!instancia)
+            res.status(404).json(`${modelName} con id ${id} no existe`)
+        else
+            next()
     }
 }
 

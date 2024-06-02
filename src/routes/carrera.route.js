@@ -1,19 +1,20 @@
 const {Router} = require('express')
-const {carrera} = require('../db/models')
-const carreraController = require('../controllers/carrera.controller')
+const {Carrera} = require('../db/models')
+const carreraController = require('../controllers/Carrera.controller')
 const carreraMiddleware = require('../middlewares/middleware')
 const carreraSchema = require("../schemas/carrera.schema")
-const routerCarrera = Router()
+const materiaSchema = require("../schemas/materia.schema")
+const carreraRouter = Router()
 
-routerCarrera.get("/carreras", carreraController.getAllCarreras)
+carreraRouter.get("/carreras", carreraController.getAllCarreras)
 
-routerCarrera.get("/carreras/:id", carreraMiddleware.existsById(carrera), carreraController.getCarreraById)
+carreraRouter.get("/carreras/:id", carreraMiddleware.existsById(Carrera), carreraController.getCarreraById)
 
-routerCarrera.get("/carreras/:id/materias",carreraMiddleware.existsById(carrera), carreraController.getMateriasInCarrera)
+carreraRouter.get("/carreras/:id/materias",carreraMiddleware.existsById(Carrera), carreraController.getMateriasInCarrera)
 
-routerCarrera.post("/carreras", carreraMiddleware.validateSchema(carreraSchema), carreraController.createCarrera)
+carreraRouter.post("/carreras", carreraMiddleware.validateSchema(carreraSchema), carreraController.createCarrera)
 
-routerCarrera.post("/carreras/:id/materia", carreraMiddleware.existsById(carrera),carreraMiddleware.validateSchema(carreraSchema) ,carreraController.createMateriaInCarrera)
+carreraRouter.post("/carreras/:id/materia", carreraMiddleware.existsById(Carrera),carreraMiddleware.validateSchema(materiaSchema) ,carreraController.createMateriaInCarrera)
 
 
-module.exports = routerCarrera
+module.exports = carreraRouter;

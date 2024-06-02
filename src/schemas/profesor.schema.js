@@ -16,8 +16,8 @@ const profesorSchema = Joi.object().keys({
         "any.required": "el campo legajo es obligatorio",
         "number.empty": "el campo legajo no puede estar vacio"
     }),
-    activo: Joi.boolean().required().messages({
-        "boolean.empty": "el campo activo no puede estar vacio",
+    activo: Joi.number().required().messages({
+        "number.empty": "el campo activo no puede estar vacio",
         "any.required": "el campo activo es obligatorio"
     })
 })

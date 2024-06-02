@@ -10,8 +10,6 @@ routeProfesor.get("/profesores", profesorController.getAllProfesores)
 
 routeProfesor.get("/profesores/:id", profesorMiddleware.existsById(Profesor), profesorController.getProfesorById)
 
-//routeProfesor.get("/cursos/:id/profesores", profesorMiddleware.existsById(Curso) ,profesorController.getProfesoresCurso)// Este ya está en Curso 
-
 routeProfesor.post("/profesores",profesorMiddleware.validateSchema(profesorSchema), profesorController.createProfesor)
 
 routeProfesor.put("/profesores/:id",profesorMiddleware.existsById(Profesor), profesorMiddleware.validateSchema(profesorSchema),profesorController.modifyProfesorById)
