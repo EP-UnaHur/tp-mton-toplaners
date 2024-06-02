@@ -28,6 +28,12 @@ const validateSchema = (schema) => {
     }
 }
 
+const existsByIdInList = (Model) => {
+    return async(req, res, next) =>{
+
+    }
+}
+
 const existsIdInOtherModel = (Model, ModelToCheck, fk) => {
     return async (req, res, next) => {
         const idToFind = req.params.id
@@ -40,4 +46,4 @@ const existsIdInOtherModel = (Model, ModelToCheck, fk) => {
     }
 }
 
-module.exports = {existsById, validateSchema, existsIdInOtherModel}
+module.exports = {existsById, validateSchema, existsIdInOtherModel, existsByIdInList}

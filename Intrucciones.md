@@ -18,12 +18,15 @@ Para esto en la carpeta raiz de nuestra app debemos crear un archivo llamado `.e
 	DB_DEV_DATABASE = #Base de datos que usemos en el desarrollo
 	DB_DEV_HOST = #Host que usemos en el desarrollo
 	DB_DEV_DIALECT = #Dialecto/ Motor de base de datos que usemos en el desarrollo
+	DB_DEV_PORT = #Puerto de base de datos que usemos en el desarrollo
 	
 	DB_PROD_USERNAME =  #Usuario de la base de datos que usemos en producción
 	DB_PROD_PASSWORD =  #Contraseña de la base de datos que usemos en en producción
 	DB_PROD_DATABASE = #Base de datos que usemos en producción
 	DB_PROD_HOST = #Host que usemos en producción
 	DB_PROD_DIALECT = #Dialecto/ Motor de base de datos que usemos en el producción
+	DB_PROD_PORT = #Puerto de base de datos que usemos en producción
+
 
 En la carpeta raiz se encuentra un archivo llamado ``.env.example`` como ejemplo de como deberia quedar
 

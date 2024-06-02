@@ -39,9 +39,7 @@ app.listen(port, async(req, res)=>{
   //Esto verifica si me pude conectar bien a la base de datos
   await db.sequelize.authenticate()
 
-  // El método sync solo se usa en ambientes de desarrollo. No utilizar en produccion
-  // porque borra todas las tablas y las vueve a crear
-  await db.sequelize.sync({force:true}); //Sacar esto en la version final
+  await db.sequelize.sync({force:true}); //Quitar esto en produccion 
 
   //Esto es para cargar datos de prueba
   carreraTestData.map(carrera => db.Carrera.create(carrera))

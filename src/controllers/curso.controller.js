@@ -64,9 +64,9 @@ const associateProfesoresById = async(req, res) => {
     const listaProfes = req.body
     const id = req.params.id
     listaProfes.map(async (profe) => {
-    await Curso_Profesor.create({id_curso: id, id_profesor: profe.id})
-   })
-   res.status(200).json(`El curso con id ${id} se ha asociado con los profes dados`)
+        await Curso_Profesor.create({id_curso: id, id_profesor: profe.id})
+    })
+    res.status(200).json(`El Curso ${id} se asocio con los profesores correctamente`)
 }
 controller.associateProfesoresById = associateProfesoresById
 
