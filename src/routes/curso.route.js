@@ -14,7 +14,7 @@ route.get('/cursos/:id',cursoMiddleware.existsById(Curso), cursoController.findB
 route.delete('/cursos/:id',cursoMiddleware.existsById(Curso), cursoMiddleware.existsIdInOtherModel(Curso, Curso_Profesor, 'id_curso'), cursoController.deleteById) //Falta el error 500 => affectsOtherRows?
 route.put('/cursos/:id',cursoMiddleware.existsById(Curso), cursoMiddleware.validateSchema(cursoSchema), cursoController.updateById)
 route.get('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoController.getProfesoresById) 
-route.post('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoController.associateProfesoresById)
+route.post('/cursos/:id/profesores',cursoMiddleware.existsById(Curso), cursoMiddleware.existsAllIdInModel(Profesor), cursoMiddleware.existsAllRegistersInModel(Profesor), cursoController.associateProfesoresById)
 
 
 

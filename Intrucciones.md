@@ -1,9 +1,11 @@
 # Instrucciones para levantar y utilizar la api.
 
 ### Configuraciones iniciales
-Primero debemos tener el visual studio code abierto en la carpeta de la api.
+Primero debemos tener instalado `node` y `docker` para ejecutar los comandos necesarios
 
-Una vez hecho el paso anterior debemos correr el comando `npm i` para instalar las dependencias necesarias para el funcionamiento de la api.
+Tambien deberemos tener nuestor editor de codigo abierto en la carpeta de la api.
+
+Una vez hecho el paso anterior debemos correr el comando `npm i` en una terminal en la carpeta raiz de la api para instalar las dependencias necesarias para el funcionamiento de la api.
 
 La api está configurada para utilizar Sqlite por defecto, por lo tanto podemos utilizar el comando `npm run dev` para levantar la api en modo "demon" o `npm run app` para levantar la api en modo "normal"
 

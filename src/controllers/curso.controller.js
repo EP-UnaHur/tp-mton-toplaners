@@ -63,11 +63,26 @@ controller.getProfesoresById = getProfesoresById
 const associateProfesoresById = async(req, res) => {
     const listaProfes = req.body
     const id = req.params.id
-    listaProfes.map(async (profe) => {
-        await Curso_Profesor.create({id_curso: id, id_profesor: profe.id})
-    })
-    res.status(200).json(`El Curso ${id} se asocio con los profesores correctamente`)
-}
+    const mensajes = []
+    await Promise.all(
+        listaProfes.map(async (profe) => {
+            const existeRegistro = await Curso_Profesor.findOne({where:{id_curso:id, id_profesor: profe.id}})
+            console.log(existeRegistro) 
+            if(existeRegistro)
+                mensajes.push(`El profe con el ID ${profe.id} ya esta asociado al curso con id ${id}`)
+            else{
+                await Curso_Profesor.create({id_curso:id, id_profesor: profe.id})
+                mensajes.push(`El profe con el ID ${profe.id} se asocio al curso con id ${id}`)
+            }
+        }))
+
+    const cursoActualizado = await Curso.findOne({where:{id},include: [
+            {model: Materia,as: 'materia',},
+            {model: Profesor,as: 'profesores',through:{attributes: []}}
+        ],})
+    await res.status(200).json({mensajes, cursoActualizado})
+    }
+
 controller.associateProfesoresById = associateProfesoresById
 
 module.exports = controller

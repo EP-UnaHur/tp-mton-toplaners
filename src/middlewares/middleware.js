@@ -28,9 +28,46 @@ const validateSchema = (schema) => {
     }
 }
 
-const existsByIdInList = (Model) => {
+const existsAllIdInModel = (Model) => {
     return async(req, res, next) =>{
+        const list = req.body
+        const errores = []
+        const modelName = Model.modelName || (Model.options.name && Model.options.name.singular);
+        await Promise.all(
+            list.map( async(element) => {
+                const instancia = await Model.findByPk(element.id)
+                if (!instancia)
+                    errores.push(`${modelName} con id ${element.id} no existe`)
+            })
+        )
+        if(errores.length == 0)
+            next()
+        else
+            res.status(404).json({errores})
 
+
+    }
+}
+
+const existsAllRegistersInModel= (Model)  => {
+    return async(req, res, next) =>{
+        const list = req.body
+        const errores = []
+        const modelName = Model.modelName || (Model.options.name && Model.options.name.singular);
+        await Promise.all(
+            list.map( async(element) => {
+                const instancia = await Model.findByPk(element.id)
+                const esValido = _.isEqual(element, instancia.dataValues)
+                console.log(element)
+                console.log(instancia)
+                if (!esValido)
+                    errores.push(`${modelName} con id ${element.id} tiene datos incorrectos`)
+            })
+        )
+        if(errores.length == 0)
+            next()
+        else
+            res.status(400).json({errores})
     }
 }
 
@@ -46,4 +83,4 @@ const existsIdInOtherModel = (Model, ModelToCheck, fk) => {
     }
 }
 
-module.exports = {existsById, validateSchema, existsIdInOtherModel, existsByIdInList}
+module.exports = {existsById, validateSchema, existsIdInOtherModel, existsAllIdInModel, existsAllRegistersInModel}
